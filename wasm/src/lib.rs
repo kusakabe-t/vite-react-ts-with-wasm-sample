@@ -1,6 +1,7 @@
 mod utils;
 
 use wasm_bindgen::prelude::*;
+use rand::Rng;
 
 // When the `wee_alloc` feature is enabled, use `wee_alloc` as the global
 // allocator.
@@ -16,4 +17,12 @@ extern {
 #[wasm_bindgen]
 pub fn greet() {
     alert("Hello, wasm!");
+}
+
+#[wasm_bindgen]
+pub fn gen_rand_num() {
+    let mut rng = rand::thread_rng();
+
+    let n1: u8 = rng.gen();
+    alert(&format!("Random u8: {}", n1));
 }
